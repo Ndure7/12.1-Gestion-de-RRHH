@@ -1,0 +1,328 @@
+/* ============================================
+   Caso 12.1 - Portal de Vacaciones (RRHH)
+   Paleta: pizarra + mostaza (corporativo, calido)
+   ============================================ */
+
+:root {
+  --slate-950: #14181f;
+  --slate-900: #1b212b;
+  --slate-800: #262e3a;
+  --slate-600: #4d5a6b;
+  --slate-400: #8893a1;
+  --slate-200: #d9ddE3;
+  --paper: #f6f4ef;
+  --mustard: #d99a2b;
+  --mustard-dark: #b87e1a;
+  --green: #3c8f6c;
+  --green-bg: #e3f3ec;
+  --red: #c1453a;
+  --red-bg: #fbe9e7;
+  --yellow-bg: #fff3d6;
+  --yellow-border: #e8b945;
+
+  --radius: 10px;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--slate-900);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--slate-950);
+  color: var(--paper);
+  padding: 18px 32px;
+}
+
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar__mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: var(--mustard);
+  color: var(--slate-950);
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.topbar__name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.topbar__user {
+  font-size: 0.85rem;
+  color: var(--slate-400);
+}
+
+/* ---------- Layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 460px) 1fr;
+  gap: 28px;
+  max-width: 1180px;
+  margin: 36px auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+}
+
+.panel__title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  margin: 0 0 6px;
+  color: var(--slate-950);
+}
+
+.panel__title--sm { font-size: 1.3rem; }
+
+.panel__subtitle {
+  margin: 0 0 26px;
+  color: var(--slate-600);
+  font-size: 0.94rem;
+}
+
+/* ---------- Formulario ---------- */
+.campo {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-grupo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.campo-grupo .campo { margin-bottom: 0; }
+
+label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--slate-600);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+input {
+  border: 1.5px solid var(--slate-200);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.98rem;
+  font-family: var(--font-body);
+  color: var(--slate-900);
+  background: var(--paper);
+  transition: border-color 0.15s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--mustard);
+}
+
+input[readonly] {
+  background: var(--slate-200);
+  color: var(--slate-600);
+}
+
+.campo__ayuda {
+  font-size: 0.78rem;
+  color: var(--slate-400);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---------- Saldo card ---------- */
+.saldo-card {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  background: var(--slate-950);
+  color: var(--paper);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 20px 0 24px;
+}
+
+.saldo-card__label {
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-right: auto;
+}
+
+.saldo-card__valor {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--mustard);
+  font-weight: 700;
+}
+
+.saldo-card__unidad {
+  font-size: 0.85rem;
+  color: var(--slate-400);
+}
+
+/* ---------- Boton ---------- */
+.btn-enviar {
+  width: 100%;
+  background: var(--mustard);
+  color: var(--slate-950);
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-enviar:hover { background: var(--mustard-dark); }
+.btn-enviar:active { transform: scale(0.99); }
+.btn-enviar:disabled {
+  background: var(--slate-200);
+  color: var(--slate-400);
+  cursor: not-allowed;
+}
+
+/* ---------- Mensajes ---------- */
+.mensaje {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.mensaje--ok {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid #b9e0cd;
+}
+
+.mensaje--error {
+  background: var(--red-bg);
+  color: var(--red);
+  border: 1px solid #f0c4bf;
+}
+
+/* ---------- Panel calendario / lista ---------- */
+.panel__header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.leyenda {
+  display: flex;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: var(--slate-600);
+}
+
+.leyenda__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.punto--pendiente { background: var(--yellow-border); }
+.punto--aprobada { background: var(--green); }
+
+.lista-vacaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lista-vacaciones__vacio {
+  color: var(--slate-400);
+  font-size: 0.92rem;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.tarjeta-vacacion {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--slate-200);
+  border-left: 4px solid var(--yellow-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--yellow-bg);
+}
+
+.tarjeta-vacacion--aprobada {
+  border-left-color: var(--green);
+  background: var(--green-bg);
+}
+
+.tarjeta-vacacion__fechas {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--slate-950);
+}
+
+.tarjeta-vacacion__dias {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--slate-600);
+}
+
+.tarjeta-vacacion__estado {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--yellow-border);
+  color: #5a4108;
+}
+
+.tarjeta-vacacion--aprobada .tarjeta-vacacion__estado {
+  background: var(--green);
+  color: #fff;
+}

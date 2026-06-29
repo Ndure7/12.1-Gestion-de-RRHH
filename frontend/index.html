@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitar vacaciones · RRHH</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__mark">PTO</span>
+      <span class="topbar__name">Portal de Vacaciones</span>
+    </div>
+    <div class="topbar__user" id="cajaUsuario">Cargando legajo…</div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ===================== COLUMNA IZQUIERDA: FORMULARIO ===================== -->
+    <section class="panel panel--form">
+      <h1 class="panel__title">Solicitar vacaciones</h1>
+      <p class="panel__subtitle">Completá el rango de fechas y enviá tu solicitud para aprobación.</p>
+
+      <form id="formVacaciones" novalidate>
+
+        <div class="campo">
+          <label for="id_empleado">Legajo (ID empleado)</label>
+          <input type="number" id="id_empleado" name="id_empleado" value="13" required>
+        </div>
+
+        <div class="campo">
+          <label for="id_sector">Sector (ID sector)</label>
+          <input type="number" id="id_sector" name="id_sector" value="6" required>
+        </div>
+
+        <div class="campo-grupo">
+          <div class="campo">
+            <label for="fecha_inicio">Fecha de inicio</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+          </div>
+          <div class="campo">
+            <label for="fecha_fin">Fecha de fin</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="dias_solicitados">Días solicitados</label>
+          <input type="number" id="dias_solicitados" name="dias_solicitados" min="1" readonly>
+          <span class="campo__ayuda">Se calcula automáticamente según el rango elegido.</span>
+        </div>
+
+        <div class="saldo-card" id="saldoCard">
+          <span class="saldo-card__label">Saldo disponible</span>
+          <span class="saldo-card__valor" id="saldoValor">—</span>
+          <span class="saldo-card__unidad">días</span>
+        </div>
+
+        <button type="submit" class="btn-enviar" id="btnEnviar">Enviar solicitud</button>
+
+        <div id="mensajeResultado" class="mensaje" hidden></div>
+      </form>
+    </section>
+
+    <!-- ===================== COLUMNA DERECHA: CALENDARIO ===================== -->
+    <section class="panel panel--calendario">
+      <div class="panel__header-row">
+        <h2 class="panel__title panel__title--sm">Tus solicitudes</h2>
+        <div class="leyenda">
+          <span class="leyenda__item"><i class="punto punto--pendiente"></i> Pendiente</span>
+          <span class="leyenda__item"><i class="punto punto--aprobada"></i> Aprobada</span>
+        </div>
+      </div>
+
+      <div id="listaVacaciones" class="lista-vacaciones">
+        <p class="lista-vacaciones__vacio">Todavía no hay solicitudes cargadas.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
